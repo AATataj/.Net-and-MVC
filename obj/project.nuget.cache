@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "NB2xJbtinVEtJlgDzjXTGNZhquvFJEYFKhvUxXel3H4kLYJL0mLSJU1KFiCDUx4SJ74lO5k0lsFe2f0zHsHGEg==",
+  "success": true,
+  "projectFilePath": "/home/slick/Documents/nbaMVC/nbaMVC.csproj",
+  "expectedPackageFiles": [
+    "/home/slick/.nuget/packages/mysqlconnector/1.0.0/mysqlconnector.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

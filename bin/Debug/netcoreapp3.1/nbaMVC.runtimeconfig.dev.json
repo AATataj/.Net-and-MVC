@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/slick/.dotnet/store/|arch|/|tfm|",
+      "/home/slick/.nuget/packages"
+    ]
+  }
+}
