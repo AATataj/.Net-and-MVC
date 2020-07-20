@@ -20,6 +20,10 @@ namespace nbaMVC{
         public testQuery(nbaDB DB){
             db = DB;
         }
+        public async Task<List<testQuery>>createQuery(string name, List<bool> qparams, string season ){
+            using var cmd = db.Connection.CreateCommand();
+            return await retrieveData(await cmd.ExecuteReaderAsync(0));
+        }
         public async Task<List<testQuery>> runQuery(){
             using var cmd = db.Connection.CreateCommand();
             cmd.CommandText = @"SELECT name, pts, trb, 3fgm, stl, blk, tov, minutes, fgPer, ftPer  FROM boxscores limit 5;";

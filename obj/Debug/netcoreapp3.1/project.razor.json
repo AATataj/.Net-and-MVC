@@ -20536,6 +20536,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/slick/Documents/nbaMVC/Views/Home/queryResults.cshtml",
+      "TargetPath": "Views\\Home\\queryResults.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/slick/Documents/nbaMVC/Views/Shared/Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"

@@ -28,23 +28,34 @@ namespace nbaMVC.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public async Task<IActionResult> NbaStats()
-        {
+        // [HttpGet]
+        // public async Task<IActionResult> NbaStats()
+        // {
 
+        //     await db.Connection.OpenAsync();
+        //     var query = new testQuery(db);
+        //     var result = await query.runQuery();
+        //     if (result is null)
+        //         return new NotFoundResult();
+        //     return new OkObjectResult(result);
+
+        // }
+        public IActionResult NbaStats()
+        {
+            // put in our controller logic for the sql query here:
+            return View();
+        }
+        public async Task<IActionResult>queryResults(string first, string last, List<bool> qparams, string season)
+        {
+            // pull data from view
             await db.Connection.OpenAsync();
             var query = new testQuery(db);
-            var result = await query.runQuery();
+            var result = await query.createQuery(first + " " + last, qparams, season);
             if (result is null)
                 return new NotFoundResult();
             return new OkObjectResult(result);
 
         }
-        /*public IActionResult NbaStats()
-        {
-            // put in our controller logic for the sql query here:
-            return View();
-        }*/
         public IActionResult dbUpload()
         {
             return View();
