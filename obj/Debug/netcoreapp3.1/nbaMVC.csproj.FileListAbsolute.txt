@@ -38,3 +38,5 @@
 /home/slick/Documents/nbaMVC/obj/Debug/netcoreapp3.1/Razor/Views/Home/NbaStats.cshtml.g.cs
 /home/slick/Documents/nbaMVC/obj/Debug/netcoreapp3.1/Razor/Views/Home/dbUpload.cshtml.g.cs
 /home/slick/Documents/nbaMVC/bin/Debug/netcoreapp3.1/MySqlConnector.dll
+/home/slick/Documents/nbaMVC/obj/Debug/netcoreapp3.1/Razor/Views/Home/queryResults.cshtml.g.cs
+/home/slick/Documents/nbaMVC/obj/Debug/netcoreapp3.1/Razor/temp/NbaStats.cshtml.g.cs

@@ -20556,6 +20556,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/slick/Documents/nbaMVC/temp/NbaStats.cshtml",
+      "TargetPath": "temp\\NbaStats.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/slick/Documents/nbaMVC/Views/Home/Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"

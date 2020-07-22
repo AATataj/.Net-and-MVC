@@ -40,7 +40,14 @@ namespace nbaMVC.Controllers
         //     return new OkObjectResult(result);
 
         // }
-        public IActionResult NbaStats()
+        [HttpPost]
+        public ActionResult createQuery (){
+            string name = Request.Form["first"] + " " + Request.Form["last"];
+            //Console.WriteLine(name);
+            string season = Request.Form["season"];
+            return Content(season);
+        }
+        public ActionResult NbaStats()
         {
             // put in our controller logic for the sql query here:
             return View();
