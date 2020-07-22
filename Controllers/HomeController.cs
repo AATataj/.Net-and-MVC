@@ -45,7 +45,8 @@ namespace nbaMVC.Controllers
             string name = Request.Form["first"] + " " + Request.Form["last"];
             //Console.WriteLine(name);
             string season = Request.Form["season"];
-            return Content(season);
+            string cats = Request.Form["catValues"];
+            return Content(cats);
         }
         public ActionResult NbaStats()
         {

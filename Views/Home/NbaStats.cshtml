@@ -48,7 +48,22 @@
         <br>
         Catagories
         <br>
+        @{
+            List<SelectListItem> cats = new List<SelectListItem>();
+            queryDetails queryDets = new queryDetails();
+            foreach(KeyValuePair<string, bool> entry in queryDets.categories){
+                cats.Add(new SelectListItem{
+                    Text = entry.Key,
+                    Value = entry.Key
+                });
+                @Html.CheckBoxFor(m => m.catValues[cats.Count-1], cats[cats.Count-1].Text);
+                @entry.Key;
+            }
+            
+
+        }
         
+
         <input type="submit" value="Run Query" />
 
     </form>
