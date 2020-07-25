@@ -44,14 +44,17 @@ namespace nbaMVC.Controllers
         public ActionResult createQuery (){
             string name = Request.Form["first"] + " " + Request.Form["last"];
             string season = Request.Form["season"];
-            string cats = Request.Form["catValues"];
+            //string cats = Request.Form["catValues"];
             List<string> catValues = new List<string>();
             foreach(var entry in Request.Form){
                 if(entry.Value == "true"){
                     catValues.Add(entry.Key);
                 }
             }
-            
+            Console.WriteLine(catValues.GetType());
+            Console.WriteLine(catValues[1]);
+            queryDetails resultQueryObject = new queryDetails(name, season, catValues, db);
+            resultQueryObject.runQuery();
             return Content(string.Join(",", catValues));
         }
         [HttpGet]
