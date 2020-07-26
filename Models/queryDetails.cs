@@ -26,28 +26,32 @@ namespace nbaMVC{
             }
         }
         public async Task<List<Dictionary<string,dynamic>>> runQuery(){
-            string query = "select ";
+            string query = "select date, ";
             string startDate = string.Format("'{0}-09-01'", this.season.Substring(0, 4));
             string endDate = string.Format("'{0}-08-01'", this.season.Substring(5));
             using var cmd = db.Connection.CreateCommand();
-
             foreach(string cat in this.catValues){
-                query += cat;
+                if (cat.Equals("reb,"))
+                    query += "trb,";
+                else
+                    query += cat;
             }
             query = query.Remove(query.Length -1 );
             query += " from boxscores where name = '{0}' and date > {1} and date < {2};";
             query = string.Format(query, name, startDate, endDate);
             cmd.CommandText = query;
-            Console.WriteLine("ok, here?"); 
-            DbDataReader reader = cmd.ExecuteReader();
-            while (await reader.ReadAsync()){
-                Console.WriteLine("we get here");
-                Dictionary<string, dynamic> newDict = new Dictionary<string, dynamic>();
-                for(int i=0; i< catValues.Count; i++){
-                    Console.WriteLine(catValues[i] + " = " + reader.GetString(i));
-                    newDict.Add(catValues[i], reader.GetString(i));
+            Console.WriteLine(cmd.CommandText);
+            DbDataReader reader = await cmd.ExecuteReaderAsync();
+            using (reader){
+                while (await reader.ReadAsync()){
+                    Console.WriteLine("we get here");
+                    Dictionary<string, dynamic> newDict = new Dictionary<string, dynamic>();
+                    for(int i=0; i< catValues.Count; i++){
+                        Console.WriteLine(catValues[i] + " = " + reader.GetString(i));
+                        newDict.Add(catValues[i], reader.GetString(i));
+                    }
+                    this.results.Add(newDict);
                 }
-                this.results.Add(newDict);
             }
             Console.WriteLine(this.results.ToString());
             await Task.Delay(10);

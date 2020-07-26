@@ -22,7 +22,7 @@ namespace nbaMVC{
         }
         public async Task<List<testQuery>>createQuery(string name, List<bool> qparams, string season ){
             using var cmd = db.Connection.CreateCommand();
-            return await retrieveData(await cmd.ExecuteReaderAsync(0));
+            return await retrieveData(await cmd.ExecuteReaderAsync());
         }
         public async Task<List<testQuery>> runQuery(){
             using var cmd = db.Connection.CreateCommand();

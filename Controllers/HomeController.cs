@@ -41,10 +41,10 @@ namespace nbaMVC.Controllers
 
         // }
         [HttpPost]
-        public ActionResult createQuery (){
+        public async Task<IActionResult> createQuery (){
+            await db.Connection.OpenAsync();
             string name = Request.Form["first"] + " " + Request.Form["last"];
             string season = Request.Form["season"];
-            //string cats = Request.Form["catValues"];
             List<string> catValues = new List<string>();
             foreach(var entry in Request.Form){
                 if(entry.Value == "true"){
@@ -52,8 +52,9 @@ namespace nbaMVC.Controllers
                 }
             }
             queryDetails resultQueryObject = new queryDetails(name, season, catValues, db);
-            resultQueryObject.runQuery();
-            return Content(string.Join(",", catValues));
+            var result = resultQueryObject.runQuery();
+
+            return new OkObjectResult(result);
         }
         [HttpGet]
         public ActionResult NbaStats()
