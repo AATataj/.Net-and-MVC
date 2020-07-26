@@ -51,8 +51,6 @@ namespace nbaMVC.Controllers
                     catValues.Add(entry.Key);
                 }
             }
-            Console.WriteLine(catValues.GetType());
-            Console.WriteLine(catValues[1]);
             queryDetails resultQueryObject = new queryDetails(name, season, catValues, db);
             resultQueryObject.runQuery();
             return Content(string.Join(",", catValues));
