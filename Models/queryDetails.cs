@@ -44,17 +44,14 @@ namespace nbaMVC{
             DbDataReader reader = await cmd.ExecuteReaderAsync();
             using (reader){
                 while (await reader.ReadAsync()){
-                    Console.WriteLine("we get here");
                     Dictionary<string, dynamic> newDict = new Dictionary<string, dynamic>();
                     for(int i=0; i< catValues.Count; i++){
-                        Console.WriteLine(catValues[i] + " = " + reader.GetString(i));
-                        newDict.Add(catValues[i], reader.GetString(i));
+                        newDict.Add(catValues[i], reader.GetValue(i).ToString());
                     }
                     this.results.Add(newDict);
                 }
             }
             Console.WriteLine(this.results.ToString());
-            await Task.Delay(10);
             return this.results;
         }
 

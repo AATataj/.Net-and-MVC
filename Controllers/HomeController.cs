@@ -52,7 +52,7 @@ namespace nbaMVC.Controllers
                 }
             }
             queryDetails resultQueryObject = new queryDetails(name, season, catValues, db);
-            var result = resultQueryObject.runQuery();
+            var result = await resultQueryObject.runQuery();
 
             return new OkObjectResult(result);
         }
