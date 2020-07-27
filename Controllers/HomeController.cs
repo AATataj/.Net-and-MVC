@@ -41,6 +41,7 @@ namespace nbaMVC.Controllers
 
         // }
         [HttpPost]
+        //every async call has to have an await, or we'll get strange and useless errors
         public async Task<IActionResult> createQuery (){
             await db.Connection.OpenAsync();
             string name = Request.Form["first"] + " " + Request.Form["last"];
@@ -54,7 +55,8 @@ namespace nbaMVC.Controllers
             queryDetails resultQueryObject = new queryDetails(name, season, catValues, db);
             var result = await resultQueryObject.runQuery();
 
-            return new OkObjectResult(result);
+            return View("queryResults", resultQueryObject);
+            //return new OkObjectResult(result);
         }
         [HttpGet]
         public ActionResult NbaStats()

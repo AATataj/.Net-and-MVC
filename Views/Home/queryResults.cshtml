@@ -1,7 +1,24 @@
 @{
     ViewData["Title"] = "query results";
 }
+@using nbaMVC.Models
+@model queryDetails
+
 
 <div class="text-center">
-    
+    <table>
+        <tr>
+            <th>Date</th>
+            @foreach(var cat in Model.catValues){
+                <th>@cat</th>
+            }
+        </tr>
+            @foreach(var dict in Model.results){
+                <tr>
+                @foreach(var value in dict){
+                    <td>@value.Value</td>
+                }
+                </tr>
+            }   
+    </table>    
 </div>
