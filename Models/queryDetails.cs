@@ -21,12 +21,13 @@ namespace nbaMVC{
             this.name = name;
             this.season = season;
             this.catValues = new List<string>();
+            this.catValues.Add("date,");
             foreach (string cat in catvalues){
                 this.catValues.Add(cat);
             }
         }
         public async Task<List<Dictionary<string,dynamic>>> runQuery(){
-            string query = "select date, ";
+            string query = "select ";
             string startDate = string.Format("'{0}-09-01'", this.season.Substring(0, 4));
             string endDate = string.Format("'{0}-08-01'", this.season.Substring(5));
             using var cmd = db.Connection.CreateCommand();
@@ -51,7 +52,11 @@ namespace nbaMVC{
                     this.results.Add(newDict);
                 }
             }
-            Console.WriteLine(this.results.ToString());
+            foreach(var row in this.results){
+                foreach( var value in row){
+                    Console.WriteLine(value.Value);
+                }
+            }
             return this.results;
         }
 
